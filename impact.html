@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uganda Impact Map – Build An Opportunity</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Your Site Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Page-specific styles - uses id.css variables */
+
+
+
+    .map-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-2);
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+
+    .card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: 12px;
+      padding: var(--space-4);
+      box-shadow: none;
+    }
+
+    .bento-label {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: var(--space-2);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin: var(--space-2) 0 var(--space-3);
+    }
+
+    p {
+      margin-bottom: var(--space-3);
+      color: var(--color-gray-700);
+    }
+
+    /* Form */
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .form-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    #newsletterEmail {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--color-gray-200);
+      border-radius: 8px;
+      font-family: var(--font-main);
+      font-size: 1rem;
+    }
+
+    #newsletterEmail:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
+    .newsletter-btn {
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0 20px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--color-accent-hover);
+    }
+
+    .form-note {
+      font-size: 0.85rem;
+      color: var(--color-gray-500);
+      margin: 0;
+    }
+
+    /* Map */
+    #ugandaMap {
+      height: 500px;
+      width: 100%;
+      border-radius: 12px;
+      background: #f0f4f8;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .map-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      #ugandaMap {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <my-header active="stories"></my-header>
+  <div class="map-section">
+    <div class="map-grid">
+      <!-- NEWSLETTER FORM -->
+      <div class="card">
+        <span class="bento-label">Stay Updated</span>
+        <h2>Join Our Mission</h2>
+        <p>Receive monthly stories, impact reports, and prayer requests from children and families in Uganda.</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <div class="form-group">
+            <input type="email" id="newsletterEmail" placeholder="your@email.com" required />
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </div>
+          <p class="form-note">We respect your privacy. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+      <!-- UGANDA MAP -->
+      <div class="card">
+        <span class="bento-label">Our Impact Zones</span>
+        <h2>Uganda Coverage Map</h2>
+        <p>Shaded regions show where Build An Opportunity actively supports families through education, farming, and
+          mentorship.</p>
+        <div id="ugandaMap"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // Initialize map centered on Uganda
+    const map = L.map('ugandaMap').setView([1.373, 32.290], 7); // Uganda center
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Simplified GeoJSON for Ugandan districts (Mityana + Luwero only)
+    const ugandaDistricts = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": { "name": "Mityana" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [31.5, 0.3], [31.5, 0.8], [32.0, 0.8], [32.0, 0.3], [31.5, 0.3]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "name": "Luwero" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [32.2, 0.5], [32.2, 1.1], [32.8, 1.1], [32.8, 0.5], [32.2, 0.5]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "name": "Kampala" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [32.45, 0.25], [32.45, 0.4], [32.65, 0.4], [32.65, 0.25], [32.45, 0.25]
+            ]]
+          }
+        }
+      ]
+    };
+
+    // Style function
+    function style(feature) {
+      if (feature.properties.name === "Mityana" || feature.properties.name === "Luwero") {
+        return {
+          fillColor: "#dbeafe", // Light blue fill
+          weight: 2,
+          opacity: 1,
+          color: "#1e3a8a",
+          dashArray: "3",
+          fillOpacity: 0.4
+        };
+      } else if (feature.properties.name === "Kampala") {
+        return {
+          fillColor: "#f9fafb",
+          weight: 2,
+          opacity: 1,
+          color: "#64748b",
+          dashArray: "2,4",
+          fillOpacity: 0.1
+        };
+      }
+      return {
+        fillColor: "#f9fafb",
+        weight: 1,
+        opacity: 0.6,
+        color: "#cbd5e1",
+        fillOpacity: 0.05
+      };
+    }
+
+    // Add GeoJSON layer
+    L.geoJSON(ugandaDistricts, {
+      style: style,
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(`<strong>${feature.properties.name}</strong><br>
+          ${feature.properties.name === "Mityana" || feature.properties.name === "Luwero"
+            ? "✅ Active BAO Impact Zone"
+            : feature.properties.name === "Kampala"
+              ? "📍 National Hub (Admin)"
+              : "Not currently served"}`);
+      }
+    }).addTo(map);
+
+    // Form Handler
+    document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert(`Thank you! We’ll send updates to ${email}.`);
+        this.reset();
+      } else {
+        alert('Please enter a valid email.');
+      }
+    });
+  </script>
+  <my-footer></my-footer>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sponsorship Portal | BAO Africa</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Local overrides - using id.css variables */
+        :root {
+            --deep: var(--color-text-dark);
+            --brand: var(--color-accent);
+            --soft-blue: var(--color-off-white);
+            --border: var(--color-border);
+            --white: var(--color-white);
+            --success: var(--color-success);
+            --gray-500: var(--color-text-light);
+            --gray-400: var(--color-text-muted);
+        }
+
+        .wrapper {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+        }
+
+
+
+        /* --- COMPACT HERO SECTION (Option C) --- */
+        .hero-compact {
+            background-color: var(--color-off-white);
+            padding: 40px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-container-compact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+        }
+
+        .hero-text-side {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .breadcrumbs {
+            font-size: 0.85rem;
+            color: var(--brand);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumbs span {
+            color: var(--gray-400);
+        }
+
+        .breadcrumbs a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .hero-compact h1 {
+            font-size: 2.2rem;
+            color: var(--deep);
+            margin: 0;
+            position: relative;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .hero-compact h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--brand);
+            border-radius: 2px;
+        }
+
+        .hero-image-side {
+            position: relative;
+        }
+
+        .hero-circle-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--brand);
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.15);
+            background: #fff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .hero-container-compact {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .hero-compact h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .hero-text-side {
+                align-items: center;
+            }
+
+            .hero-circle-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* --- MAIN GRID --- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 60px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: sticky;
+            top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--brand);
+            margin-bottom: 10px;
+        }
+
+        .need-item {
+            background: var(--soft-blue);
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            min-height: 48px;
+            text-decoration: none;
+            background: none;
+            color: var(--deep);
+        }
+
+        /* SIDEBAR HOVER/FOCUS: underline on hover/focus for all items, hide dot, no circular ring */
+        .sidebar .need-item {
+            background: var(--soft-blue);
+            padding-left: 12px;
+            /* align with dot position */
+        }
+
+        .sidebar .need-item:hover,
+        .sidebar .need-item:focus {
+            background: white;
+            border-color: transparent;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .sidebar .need-item:hover .dot,
+        .sidebar .need-item:focus .dot {
+            display: none;
+            animation: none;
+        }
+
+        /* Only show a visible focus ring when keyboard-focused */
+        .sidebar .need-item:focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        /* --- TABS & CONTENT --- */
+        .stream-toggle {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .t-btn {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .t-btn.active {
+            color: var(--deep);
+        }
+
+        .t-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--deep);
+        }
+
+        .t-btn:focus {
+            outline: none;
+        }
+
+        .t-btn:focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .profile-card {
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-card.hidden {
+            display: none;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-content {
+            padding: 30px;
+        }
+
+        .profile-card h2 {
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .profile-card p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-story {
+            background: none;
+            border: none;
+            font-weight: 800;
+            color: var(--brand);
+            text-decoration: underline;
+            text-decoration-color: var(--brand);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .read-story:hover,
+        .read-story:focus {
+            color: var(--deep);
+        }
+
+        .read-story:focus {
+            outline: 2px solid var(--brand);
+            outline-offset: 2px;
+            border-radius: 3px;
+        }
+
+        /* --- CART / IMPACT COUNTER --- */
+        .impact-counter {
+            background: var(--success);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .impact-label .impact-counter {
+            display: none;
+        }
+
+        .impact-label.has-items .impact-counter {
+            display: inline;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 3000;
+            display: none;
+            padding: 40px;
+            overflow-y: auto;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            line-height: 1;
+            color: var(--deep);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal .hamburger {
+            width: 20px;
+            height: 2px;
+            background: var(--deep);
+            display: block;
+            position: relative;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .close-modal .hamburger::before,
+        .close-modal .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--deep);
+            transition: transform 0.18s ease, top 0.18s ease, opacity 0.18s ease;
+        }
+
+        .close-modal .hamburger::before {
+            top: -6px;
+        }
+
+        .close-modal .hamburger::after {
+            top: 6px;
+        }
+
+        .close-modal:hover .hamburger,
+        .close-modal:focus .hamburger {
+            background: var(--brand);
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--brand);
+            background: var(--soft-blue);
+            border-radius: 50%;
+        }
+
+        .close-modal:focus {
+            outline: 2px solid var(--brand);
+        }
+
+        /* when modal is open, show an X (transform hamburger to X) */
+        .close-modal.is-open .hamburger {
+            background: transparent;
+        }
+
+        .close-modal.is-open .hamburger::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .close-modal.is-open .hamburger::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        .mobile-hub-btn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 800;
+            box-shadow: none;
+            z-index: 2000;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            min-height: 56px;
+            min-width: 200px;
+            touch-action: manipulation;
+        }
+
+        .mobile-hub-btn:focus {
+            outline: 2px solid white;
+            outline-offset: 4px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--brand);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        /* make registry items show dot and resemble the sidebar */
+        .modal .need-item {
+            justify-content: flex-start;
+            gap: 12px;
+            display: flex;
+            align-items: center;
+            background: var(--soft-blue);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            width: 100%;
+            text-align: left;
+            color: var(--deep);
+        }
+
+        .modal .need-item .dot {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .modal .need-thumb {
+            display: none;
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        .modal .need-body {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* registry grid: two-column layout for program thumbnails */
+            .modal .registry-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+                align-items: stretch;
+            }
+
+            /* each item becomes a stacked card inside the grid */
+            .modal .need-item {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                background: var(--soft-blue);
+                padding: 10px;
+                border-radius: 12px;
+                text-decoration: none;
+                border: 1px solid transparent;
+            }
+
+            .modal .need-thumb {
+                display: block;
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin: 0 0 10px 0;
+            }
+
+            .modal .need-body {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .modal .need-title {
+                display: block;
+            }
+
+            .modal .need-item:hover,
+            .modal .need-item:focus {
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 6px;
+            }
+
+            .modal .need-item:hover .dot,
+            .modal .need-item:focus .dot {
+                display: none;
+                animation: none;
+            }
+
+            .modal .need-item:focus-visible {
+                outline: 2px solid var(--brand);
+                outline-offset: 2px;
+                border-radius: 6px;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .mobile-hub-btn {
+                display: block;
+            }
+
+            .profile-img {
+                height: 350px;
+            }
+
+            .profile-card h2 {
+                font-size: 2rem;
+            }
+
+            /* Mobile hero adjustments */
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-image-wrapper {
+                order: 2;
+                margin-bottom: 30px;
+            }
+
+            .hero-stats {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .impact-floating-card {
+                display: none;
+            }
+
+            .hero-separator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 15px;
+            }
+
+            .stat-box {
+                padding-left: 10px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            padding: 48px 0 24px;
+            color: var(--deep);
+            font-size: 0.95rem;
+        }
+
+        .site-footer .footer-grid {
+            display: grid;
+            /* Balanced columns: brand (fluid), links (fixed), connect (socials + newsletter) */
+            grid-template-columns: 1fr 320px 320px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .site-footer .footer-brand {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .site-footer p {
+            color: var(--gray-500);
+            margin-bottom: 12px;
+            /* allow slight expansion on desktop while remaining readable */
+            max-width: 440px;
+        }
+
+        .site-footer .footer-links {
+            display: flex;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* ensure link columns don't shrink too small and create uneven gaps */
+        .site-footer .footer-links ul {
+            min-width: 140px;
+        }
+    </style>
+</head>
+
+<body>
+    <my-header active="sponsor"></my-header>
+    <div class="wrapper">
+
+        <!-- IMPROVED HERO SECTION -->
+        <!-- COMPACT HERO SECTION (Option C) -->
+        <section class="hero-compact">
+            <div class="hero-container-compact">
+                <div class="hero-text-side">
+                    <div class="breadcrumbs">
+                        <a href="index.html">Home</a> <span>&gt;</span> Sponsorship
+                    </div>
+                    <h1>Sponsorship Portal</h1>
+                </div>
+                <div class="hero-image-side">
+                    <img loading="lazy"
+                        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=400&fit=crop"
+                        class="hero-circle-img" alt="Empowering children in Uganda">
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-3col-container">
+            <aside class="sidebar">
+                <!-- Selection Flow (Cart) -->
+                <div class="sidebar-group">
+                    <h4>Your Impact</h4>
+                    <div id="sidebarCart" class="sidebar-rich-item" onclick="openCheckoutSummary()">
+                        <div class="sidebar-rich-content">
+                            <h5>Selection Flow</h5>
+                            <p>Review and finalize your impact summary.</p>
+                        </div>
+                        <span id="cartCount"
+                            style="background:var(--brand); color:white; font-size:0.8rem; font-weight:800; padding:2px 8px; border-radius:10px;">0</span>
+                    </div>
+                </div>
+
+                <!-- Identity / Branding -->
+                <div class="sidebar-identity" style="margin-bottom: 32px;">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800"
+                        alt="Empowering Communities">
+                    <div class="sidebar-identity-content">
+                        <h3>Our Impact Pillars</h3>
+                        <p>Education, nutrition, and mentorship to ensure long-term resilience.</p>
+                    </div>
+                </div>
+
+                <!-- Gifting Menu (Left Sidebar) -->
+                <div class="sidebar-group">
+                    <h4>Learning Programs</h4>
+                    <button class="sidebar-rich-item" data-action="open-need" data-key="Coding">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=100"
+                            alt="Coding">
+                        <div class="sidebar-rich-content">
+                            <h5>Coding Course</h5>
+                            <p>Master Python and Web Dev skills.</p>
+                        </div>
+                    </button>
+                    <button class="sidebar-rich-item" data-action="open-need" data-key="Animation">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1541185936-22b3d9d3f5c6?w=100"
+                            alt="Animation">
+                        <div class="sidebar-rich-content">
+                            <h5>Animation Training</h5>
+                            <p>Digital storytelling & creative art.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="sidebar-group">
+                    <h4>Essentials</h4>
+                    <button class="sidebar-rich-item" data-action="open-need" data-key="Uniform">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=100"
+                            alt="Uniform">
+                        <div class="sidebar-rich-content">
+                            <h5>School Uniform</h5>
+                            <p>Restore dignity for class activities.</p>
+                        </div>
+                    </button>
+                    <button class="sidebar-rich-item" data-action="open-need" data-key="Mattress">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1582719478250-cc34556e9b1b?w=100"
+                            alt="Mattress">
+                        <div class="sidebar-rich-content">
+                            <h5>Mattress & Bedding</h5>
+                            <p>Ensuring restful sleep & health.</p>
+                        </div>
+                    </button>
+                    <button class="sidebar-rich-item" data-action="open-need" data-key="Meals">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=100"
+                            alt="Meals">
+                        <div class="sidebar-rich-content">
+                            <h5>Daily Meals</h5>
+                            <p>Two fortified meals for students.</p>
+                        </div>
+                    </button>
+                </div>
+            </aside>
+            <main class="feed-column">
+                <div class="stream-toggle" role="tablist" aria-label="Filter beneficiaries">
+                    <button class="t-btn active" data-action="filter" data-category="children" role="tab"
+                        aria-selected="true">Students & Children</button>
+                    <button class="t-btn" data-action="filter" data-category="elderly" role="tab"
+                        aria-selected="false">Elderly Care</button>
+                </div>
+
+                <div class="profile-feed">
+
+                    <section class="profile-card" data-category="children">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1200"
+                            class="profile-img" alt="Moses, 13">
+                        <div class="profile-content">
+                            <h2>Moses, 13</h2>
+                            <p>Moses is mastering Python logic in our Mpigi Tech Lab. He dreams of using code to map
+                                local
+                                water resources.</p>
+                            <button class="read-story" data-action="open-need" data-key="Story-Moses">Read Full
+                                Narrative</button>
+                        </div>
+                    </section>
+
+                    <section class="profile-card" data-category="children">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=1200"
+                            class="profile-img" alt="Amina, 19">
+                        <div class="profile-content">
+                            <h2>Amina, 19</h2>
+                            <p>A second-year University student pursuing Public Health. She needs support for tuition
+                                fees
+                                and digital research tools.</p>
+                            <button class="read-story" data-action="open-need" data-key="Story-Amina">Read Full
+                                Narrative</button>
+                        </div>
+                    </section>
+
+                    <section class="profile-card" data-category="children">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200"
+                            class="profile-img" alt="Sarah, 10">
+                        <div class="profile-content">
+                            <h2>Sarah, 10</h2>
+                            <p>A natural in our Stop-Motion Animation class. Sarah is visualizing the folklore of her
+                                community.</p>
+                            <button class="read-story" data-action="open-need" data-key="Story-Sarah">Read Full
+                                Narrative</button>
+                        </div>
+                    </section>
+
+                    <section class="profile-card hidden" data-category="elderly">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200"
+                            class="profile-img" alt="Baba John, 74">
+                        <div class="profile-content">
+                            <h2>Baba John, 74</h2>
+                            <p>A retired carpenter now mentoring youth. John requires support for medical checkups and a
+                                comfortable mattress.</p>
+                            <button class="read-story" data-action="open-need" data-key="Story-John">Read Full
+                                Narrative</button>
+                        </div>
+                    </section>
+
+                    <section class="profile-card hidden" data-category="elderly">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1509939523145-731383f798a1?w=1200"
+                            class="profile-img" alt="Mama Florence, 68">
+                        <div class="profile-content">
+                            <h2>Mama Florence, 68</h2>
+                            <p>A respected community elder who counsels young mothers. She needs support for monthly
+                                medication.</p>
+                            <button class="read-story" data-action="open-need" data-key="Story-Florence">Read Full
+                                Narrative</button>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <aside class="sidebar-right">
+                <div class="stats-card">
+                    <h3>5,240+</h3>
+                    <p>Direct Lives Impacted</p>
+                </div>
+
+                <div class="news-ticker">
+                    <h4>Impact in Action</h4>
+                    <div class="ticker-item">
+                        <span>Moses completed the Python Logic module.</span>
+                        <span class="ticker-time">2 hours ago</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span>New coding kits delivered to Mpigi Tech Lab.</span>
+                        <span class="ticker-time">5 hours ago</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span>Mama Florence received her health checkup.</span>
+                        <span class="ticker-time">1 day ago</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-rich-item">
+                    <img loading="lazy"
+                        src="https://images.unsplash.com/photo-1626544827763-d516dce335ca?kp=1&w=350&h=200"
+                        alt="Student Animation Project" class="rich-item-img">
+                    <div class="rich-item-content">
+                        <h4>Creativity in Action</h4>
+                        <p>Watch "The River of Life," a short animation created by 14-year-old student David using Moho
+                            software taught in our digital skills program.</p>
+                        <a href="programs.html#animation" class="arrow-link">Watch Video <i
+                                class="fas fa-play-circle"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <button class="mobile-hub-btn" data-action="open-registry">Sponsorship Items</button>
+
+    <div class="modal" id="needWindow" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <button class="close-modal" id="closeModalBtn" aria-label="Open narrative" aria-expanded="false" type="button"
+            aria-controls="modalContent">
+            <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <div id="modalContent" style="max-width: 600px; margin: 80px auto;"></div>
+    </div>
+
+    <script>
+        // Load impact cart from localStorage on page load
+        let impactCart = localStorage.getItem('baoImpactCart') ? parseInt(localStorage.getItem('baoImpactCart')) : 0;
+        const impactLabel = document.getElementById('impactLabel');
+        const cartCount = document.getElementById('cartCount');
+
+        const needsData = {
+            'Coding': { title: 'Sponsor a Coding Course', text: 'Provides internet, equipment, and a tutor for one month.', anim: '>_ typing_future...', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=60&auto=format&fit=crop' },
+            'Animation': { title: 'Sponsor Animation Training', text: 'Covers software licenses and creative hardware.', anim: '▢ ▢ ▣ ▢', img: 'https://images.unsplash.com/photo-1541185936-22b3d9d3f5c6?w=600&q=60&auto=format&fit=crop' },
+            'Mattress': { title: 'Provide a Mattress', text: 'A sturdy mattress and blanket for restful sleep.', anim: '☁️', img: 'https://images.unsplash.com/photo-1582719478250-cc34556e9b1b?w=600&q=60&auto=format&fit=crop' },
+            'Uniform': { title: 'Provide a Uniform', text: 'Restores dignity and meets school requirements.', anim: '👕', img: 'https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=600&q=60&auto=format&fit=crop' },
+            'Meals': { title: 'Nutrition Support', text: 'Two fortified meals a day sourced from local farmers.', anim: '🍲', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=60&auto=format&fit=crop' },
+            'Story-Moses': { title: 'Moses\'s Full Story', text: 'Moses lives with his grandmother in Mpigi. Despite walking 5km to school, he ranked top in math. Your support keeps him coding for his village.', anim: '📖' },
+            'Story-Sarah': { title: 'Sarah\'s Full Story', text: 'Sarah uses banana fibers to create animation puppets. She dreams of preserving Baganda legends—and needs your help to stay in school.', anim: '🎬' },
+            'Story-John': { title: 'Baba John\'s Full Story', text: 'John taught carpentry for 40 years. Now, he mentors teens in tool repair. He needs medical care to keep serving.', anim: '👴' },
+            'Story-Amina': { title: 'Amina\'s Full Story', text: 'Amina is researching how digital health records can improve local clinics. She is a top student and a mentor to younger girls in the program.', anim: '🎓' },
+            'Story-Florence': { title: 'Mama Florence\'s Full Story', text: 'Florence has lived in her village for 68 years. She is the "grandmother" to many, offering wisdom and care. Your support ensures she lives a healthy, dignified life.', anim: '🏥' }
+        };
+
+        // Update cart display
+        function updateCartDisplay() {
+            if (impactCart > 0) {
+                cartCount.textContent = impactCart;
+                impactLabel.classList.add('has-items');
+            } else {
+                cartCount.textContent = '';
+                impactLabel.classList.remove('has-items');
+            }
+            // Save to localStorage
+            localStorage.setItem('baoImpactCart', impactCart);
+        }
+
+        // ===== EVENT DELEGATION =====
+        document.addEventListener('click', (e) => {
+            const actionEl = e.target.closest('[data-action]');
+            if (!actionEl) return;
+
+            const key = actionEl.dataset.key;
+            const category = actionEl.dataset.category;
+
+            switch (actionEl.dataset.action) {
+                case 'open-need':
+                    openNeed(key);
+                    break;
+                case 'filter':
+                    filterContent(category, actionEl);
+                    break;
+                case 'open-registry':
+                    openRegistry();
+                    break;
+                case 'add-to-impact':
+                    addToImpact();
+                    break;
+            }
+        });
+
+        // ===== KEYBOARD & MODAL =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('needWindow').style.display === 'block') {
+                closeNeed();
+            }
+        });
+
+        document.getElementById('needWindow').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeNeed();
+        });
+
+        // Close button (hamburger) toggles modal open/close
+        const closeBtn = document.getElementById('closeModalBtn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (ev) => {
+                const modal = document.getElementById('needWindow');
+                if (modal.style.display === 'block') {
+                    closeNeed();
+                } else {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    modal.classList.add('open');
+                    closeBtn.classList.add('is-open');
+                    closeBtn.setAttribute('aria-expanded', 'true');
+                    closeBtn.setAttribute('aria-label', 'Close narrative');
+                    closeBtn.focus();
+                }
+            });
+        }
+
+        // ===== LOGIC =====
+        function filterContent(category, btn) {
+            document.querySelectorAll('[data-action="filter"]').forEach(b => {
+                b.classList.toggle('active', b === btn);
+                b.setAttribute('aria-selected', b === btn);
+            });
+
+            document.querySelectorAll('.profile-card').forEach(card => {
+                if (card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function openNeed(key) {
+            const data = needsData[key] || needsData['Story-Moses'];
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+            <h4 style="color:var(--brand); text-transform:uppercase; font-size:0.7rem; margin-bottom:10px;">Impact Details</h4>
+            <h1 id="modalTitle" style="font-size:3rem; margin-bottom:20px; letter-spacing:-2px;">${data.title}</h1>
+            <div style="background:var(--soft-blue); padding:30px; border-radius:12px; font-family:monospace; margin-bottom:30px; color:var(--brand);">
+                ${data.anim}
+            </div>
+            <p style="font-size:1.2rem; color:var(--gray-500); margin-bottom:40px;">${data.text}</p>
+            <button 
+                data-action="add-to-impact" 
+                style="background:var(--deep); color:white; border:none; padding:18px 40px; border-radius:50px; font-weight:800; cursor:pointer; min-height:56px;"
+            >Add to Impact</button>
+        `;
+            const modal = document.getElementById('needWindow');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('open');
+            // set hamburger into the 'open' state
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (closeBtn) {
+                closeBtn.classList.add('is-open');
+                closeBtn.setAttribute('aria-expanded', 'true');
+                closeBtn.setAttribute('aria-label', 'Close narrative');
+            }
+            modal.focus();
+        }
+
+        function addToImpact() {
+            impactCart++;
+            updateCartDisplay();
+            closeNeed();
+        }
+
+        function openCheckoutSummary() {
+            if (impactCart === 0) {
+                showNotification('Your impact cart is empty. Add some items first!');
+                return;
+            }
+
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+            <h1 style="font-size:2.5rem; margin-bottom:30px; letter-spacing:-1px;">Your Impact Summary</h1>
+            <div style="background:var(--soft-blue); padding:30px; border-radius:12px; margin-bottom:30px;">
+                <h4 style="color:var(--brand); text-transform:uppercase; font-size:0.7rem; margin-bottom:15px;">IMPACT TOTAL</h4>
+                <div style="font-size:3rem; font-weight:800; color:var(--deep); margin-bottom:15px;">${impactCart} item${impactCart !== 1 ? 's' : ''}</div>
+                <p style="color:var(--gray-500); margin-bottom:25px;">Thank you for contributing to direct local impact in Uganda.</p>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <button 
+                    onclick="clearImpactCart()" 
+                    style="background:transparent; color:var(--deep); border:2px solid var(--border); padding:18px 30px; border-radius:50px; font-weight:800; cursor:pointer; flex:1;"
+                >Clear All</button>
+                <button 
+                    onclick="closeNeed()" 
+                    style="background:var(--brand); color:white; border:none; padding:18px 40px; border-radius:50px; font-weight:800; cursor:pointer; flex:1;"
+                >Continue Adding</button>
+            </div>
+        `;
+
+            const modal = document.getElementById('needWindow');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('open');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (closeBtn) {
+                closeBtn.classList.add('is-open');
+                closeBtn.setAttribute('aria-expanded', 'true');
+                closeBtn.setAttribute('aria-label', 'Close narrative');
+                closeBtn.focus();
+            }
+        }
+
+        function clearImpactCart() {
+            if (confirm('Are you sure you want to clear all impact items?')) {
+                impactCart = 0;
+                updateCartDisplay();
+                closeNeed();
+                showNotification('Impact cart cleared');
+            }
+        }
+
+        function openRegistry() {
+            const content = document.getElementById('modalContent');
+            const items = ['Coding', 'Animation', 'Meals', 'Uniform', 'Mattress'];
+            content.innerHTML = `
+            <h1 id="modalTitle" style="font-size:2.5rem; margin-bottom:30px; letter-spacing:-1px;">Sponsorship Items</h1>
+            <div class="registry-grid">
+                ${items.map(k => `
+                    <button class="need-item" data-action="open-need" data-key="${k}" style="justify-content:flex-start;">
+                        <img loading="lazy" class="need-thumb" src="${needsData[k].img || ''}" alt="${needsData[k].title} image" loading="lazy" aria-hidden="true"/>
+                        <div class="need-body"><span class="dot" aria-hidden="true"></span><span class="need-title">${needsData[k].title}</span></div>
+                    </button>
+                `).join('')}
+            </div>
+        `;
+            const modal = document.getElementById('needWindow');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('open');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (closeBtn) {
+                closeBtn.classList.add('is-open');
+                closeBtn.setAttribute('aria-expanded', 'true');
+                closeBtn.setAttribute('aria-label', 'Close narrative');
+                closeBtn.focus();
+            }
+        }
+
+        function closeNeed() {
+            const modal = document.getElementById('needWindow');
+            modal.classList.remove('open');
+            const closeBtn = document.getElementById('closeModalBtn');
+            if (closeBtn) {
+                closeBtn.classList.remove('is-open');
+                closeBtn.setAttribute('aria-expanded', 'false');
+                closeBtn.setAttribute('aria-label', 'Open narrative');
+                closeBtn.focus();
+            }
+            // Wait for animations to finish before hiding
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 240);
+        }
+
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--deep);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: none;
+            z-index: 5000;
+            animation: slideIn 0.3s ease;
+            font-weight: 600;
+            max-width: 300px;
+        `;
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+
+            // Add animation styles if not already present
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Initialize cart display on page load
+        updateCartDisplay();
+    </script>
+
+    <my-footer></my-footer>
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

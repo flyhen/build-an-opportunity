@@ -1,0 +1,40 @@
+/* Tech Education Features */
+.tech-feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--color-off-white);
+    border-radius: 12px;
+}
+
+.tech-feature i {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px);
+    background-color: #128c7e;
+    color: white;
+}

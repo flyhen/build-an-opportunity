@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build an Opportunity - Creating Hope Through Christian Charity</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Leaflet.js for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <my-header active="home"></my-header>
+    <!-- REMOVED NAV AND MOBILE MENU CONTAINER FOR NEXT STEP -->
+
+    <section class="aligned-slider-section" id="heroSlider" role="region" aria-label="Image carousel">
+        <div class="slider-text-container" role="group" aria-live="polite">
+            <div class="text-container">
+                <h2 id="slider-title"></h2>
+                <p id="slider-caption"></p>
+                <a id="slider-cta" href="#" class="slider-cta"></a>
+            </div>
+        </div>
+        <div class="slider-image-track" id="sliderTrack">
+            <div class="slide" data-title="Investing in Tomorrow's Leaders"
+                data-caption="We provide essential education and resources fueled by Christian compassion."
+                data-cta-text="Sponsor a Child Today" data-cta-link="sponsorship.html">
+                <img src="https://picsum.photos/1200/550?random=1&gravity=center" alt="Student reading book">
+            </div>
+            <div class="slide" data-title="Love in Action"
+                data-caption="Dedicated volunteers bring warmth and essential feeding programs."
+                data-cta-text="Volunteer or Donate" data-cta-link="give.html">
+                <img src="https://picsum.photos/1200/550?random=2&gravity=center" alt="Volunteer serving food">
+            </div>
+            <div class="slide" data-title="Power of Community"
+                data-caption="Through faith-based services, we build supportive networks."
+                data-cta-text="Learn About Ministries" data-cta-link="programs.html">
+                <img src="https://picsum.photos/1200/550?random=3&gravity=center" alt="Community gathering">
+            </div>
+        </div>
+        <div class="slider-nav">
+            <button class="prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-indicators"></div>
+    </section>
+
+    <section class="intro-section">
+        <!-- 1. Organization Identity & Bible Verse (New Split Section) -->
+        <div class="identity-grid">
+            <div class="org-intro">
+                <h1>Our Purpose</h1>
+                <h2>Moving beyond charity toward lasting opportunity.</h2>
+                <p>
+                    Build An Opportunity is a community-centered organization in Uganda focused on addressing systemic
+                    poverty.
+                    We tackle poverty at its roots by equipping young people and communities with the skills, tools, and
+                    dignity
+                    they need to build their own future—not just receiving handouts.
+                </p>
+                <a href="model.html" class="text-link">Our Full Story <i class="fas fa-arrow-right"
+                        aria-hidden="true"></i></a>
+            </div>
+
+            <!-- Identity Verse (Blue Box) -->
+            <div class="identity-verse">
+                <img src="https://picsum.photos/600/400?random=20&grayscale" alt="Prayer and reflection"
+                    class="verse-image">
+                <div class="verse-content">
+                    <blockquote class="verse-text">
+                        By wisdom a house is built, and through understanding it is established; through knowledge its
+                        rooms are filled with rare and beautiful treasures.
+                    </blockquote>
+                    <cite class="verse-reference">
+                        — Proverbs 24:3-4 (NIV)
+                    </cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR IMPACT MODEL (Ultra-Minimalist Parallax) -->
+    <style>
+        @media (max-width: 600px) {
+            .model-container-inner {
+                padding: 0 40px !important;
+                /* Balanced padding to align with body text above */
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 30px 20px !important;
+            }
+
+            .impact-grid>div h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .impact-grid>div p {
+                font-size: 0.85rem !important;
+            }
+
+            .impact-grid>div div {
+                font-size: 1.8rem !important;
+                margin-bottom: 5px !important;
+            }
+        }
+    </style>
+    <section class="parallax-section" id="our-strategy"
+        style="min-height: 280px; background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative; overflow: hidden; display: flex; align-items: center; padding: 40px 20px;">
+        <!-- Light Overlay for Text Legibility -->
+        <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3);"></div>
+
+        <!-- Grid Container -->
+        <div style="max-width: 1200px; width: 100%; margin: 0 auto; z-index: 2; position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: center;">
+            
+            <!-- Left Column: Label -->
+            <div style="text-align: left;">
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 700; white-space: nowrap;">
+                    Our Approach
+                </p>
+            </div>
+
+            <!-- Middle Column: Content -->
+            <div>
+                <h2 style="font-family: var(--font-head); font-size: clamp(1.6rem, 5vw, 2.2rem); color: white; margin: 0 0 16px 0; font-weight: 900; line-height: 1.2; text-align: left;">
+                    View Full Strategy
+                </h2>
+                <p style="font-size: clamp(0.9rem, 2.5vw, 1rem); color: rgba(255,255,255,0.95); line-height: 1.7; margin: 0; text-align: left;">
+                    We invest in programs that create lasting transformation for individuals and strengthen entire communities through education, nutrition, faith, and enterprise.
+                </p>
+            </div>
+
+            <!-- Right Column: Arrow -->
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <a href="model.html"
+                    style="display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; background: var(--color-primary); color: white; border-radius: 50%; text-decoration: none; font-size: 2.5rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 8px 25px rgba(146, 64, 14, 0.4);"
+                    onmouseover="this.style.background='var(--color-accent)'; this.style.transform='scale(1.1) rotate(45deg)'; this.style.boxShadow='0 15px 40px rgba(217, 119, 6, 0.5)'" 
+                    onmouseout="this.style.background='var(--color-primary)'; this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 8px 25px rgba(146, 64, 14, 0.4)'">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SPONSORSHIP SECTION (Integrated) -->
+    <section class="sponsorship-section" id="sponsor">
+        <div class="split-grid-container">
+            <div class="page-header sponsorship-header">
+                <h1>Meet Your Sponsored Child</h1>
+                <p>Every child has a story. Find a child to support and change a life forever through education,
+                    mentorship, and faith.</p>
+            </div>
+            <!-- FILTERS -->
+            <div class="filters-panel">
+                <div class="filter-title">Filter Options <i class="fas fa-sliders-h"></i></div>
+                <!-- ... filter groups remain same ... -->
+                <div class="filter-group">
+                    <label for="searchName">Search by Name</label>
+                    <input type="text" id="searchName" class="filter-input" placeholder="e.g. Amina">
+                </div>
+
+                <div class="filter-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="filter-select">
+                        <option value="">All Children</option>
+                        <option value="girl">Girls</option>
+                        <option value="boy">Boys</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="age">Minimum Age: <span id="age-display">5</span></label>
+                    <input type="range" id="age" min="5" max="16" value="5">
+                </div>
+
+                <div class="filter-group">
+                    <label for="location">Region</label>
+                    <select id="location" class="filter-select">
+                        <option value="">All Regions</option>
+                        <option value="mitiyana">Mitiyana</option>
+                        <option value="luwero">Luwero</option>
+                    </select>
+                </div>
+
+                <p id="matchCount" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 10px;"></p>
+            </div>
+
+            <div class="child-content-main">
+                <!-- CHILD DISPLAY -->
+                <div class="child-display-area">
+                    <div class="photo-section">
+                        <div class="skeleton-image" id="photoSkeleton"
+                            style="position:absolute; top:0; left:0; width:100%; height:100%;"></div>
+                        <img id="childPhoto" src="" alt="Child Photo" class="child-photo loading">
+                        <button class="nav-arrow prev-arrow" onclick="prevChild()"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button class="nav-arrow next-arrow" onclick="nextChild()"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="info-section">
+                        <div class="child-meta" id="childMeta">ID: 001 • WAITING FOR SPONSOR</div>
+                        <div class="child-name" id="childName">Loading...</div>
+                        <div class="child-location" id="childLocation">...</div>
+                        <p class="child-story" id="childStory">...</p>
+                        <div class="actions">
+                            <button class="sponsor-btn" onclick="sponsorCurrent()">Sponsor Me</button>
+                            <button class="read-more-btn" onclick="alert('Full profile coming soon!')">Full
+                                Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION DIVIDER -->
+    <div class="section-divider"></div>
+
+    <section class="impact-hub-section" id="stories">
+
+        <div class="page-header"
+            style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <h2>Latest Stories and News</h2>
+                <p>Transparency in action: See real stories, field updates, and the community you help build.</p>
+            </div>
+            <a href="impact.html" class="bento-cta-button">View All Updates <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <nav class="tabs-nav" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="stories-tab"
+                onclick="openTab(event, 'stories-tab')">Success Stories</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="news-tab"
+                onclick="openTab(event, 'news-tab')">Latest News</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="updates-tab"
+                onclick="openTab(event, 'updates-tab')">Field Updates</button>
+        </nav>
+
+        <div id="stories-tab" class="tab-content active" role="tabpanel" aria-labelledby="tab-stories">
+
+            <div class="story-card-featured">
+                <img src="https://picsum.photos/600/450?random=50" alt="Sarah, 18, Alumni" class="story-img">
+                <div class="story-text">
+                    <span
+                        style="color: var(--color-primary); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px;">Alumni
+                        Spotlight</span>
+                    <h3>Sarah: From Primary School to Digital Entrepreneur</h3>
+                    <div class="story-quote">
+                        <i class="fas fa-quote-left" style="color: var(--color-primary); margin-right: 5px;"></i>
+                        "The digital skills training was the key. It didn't just teach me coding; it taught me how
+                        to
+                        solve complex problems and build my own future."
+                    </div>
+                    <p>Sarah is now 18 and runs a small web development service in Luwero, offering affordable
+                        solutions
+                        to local businesses, demonstrating the power of our mentorship pillar.</p>
+                    <a href="#" class="news-link" style="margin-top: 15px;">Read Full Interview →</a>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 20px; font-size: 1.4rem; font-weight: 700;">More Success Stories</h3>
+            <div class="story-grid">
+
+                <div class="story-card-small" onclick="alert('Open story for Mark')">
+                    <img src="https://picsum.photos/400/250?random=51" alt="Mark, 16, Scholar">
+                    <div class="story-card-content">
+                        <span
+                            style="color: var(--color-text-light); font-size: 0.75rem; display: block; margin-bottom: 5px;">Education
+                            Pillar</span>
+                        <h4>Mark's Journey: Excelling in Mathematics</h4>
+                        <p>After receiving supplementary tutoring, Mark achieved the highest math score in the
+                            district
+                            this year.</p>
+                        <a href="#" class="news-link">Read Story →</a>
+                    </div>
+                </div>
+
+                <div class="story-card-small" onclick="alert('Open story for Community Well')">
+                    <img src="https://picsum.photos/400/250?random=52" alt="Community Well Project">
+                    <div class="story-card-content">
+                        <span
+                            style="color: var(--color-text-light); font-size: 0.75rem; display: block; margin-bottom: 5px;">Health
+                            & Water</span>
+                        <h4>New Well for Mitiyana Village</h4>
+                        <p>Clean water access has improved health outcomes for 300 families in just three months.
+                        </p>
+                        <a href="#" class="news-link">Read Story →</a>
+                    </div>
+                </div>
+
+                <div class="story-card-small" onclick="alert('Open story for Teacher Training')">
+                    <img src="https://picsum.photos/400/250?random=53" alt="Teacher Workshop">
+                    <div class="story-card-content">
+                        <span
+                            style="color: var(--color-text-light); font-size: 0.75rem; display: block; margin-bottom: 5px;">Staff
+                            Dev</span>
+                        <h4>Teacher Training Workshop Success</h4>
+                        <p>Our educators learned new interactive teaching methods to boost student engagement.</p>
+                        <a href="#" class="news-link">Read Story →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="news-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-news">
+            <ul class="news-list">
+                <li class="news-item" onclick="openModal('Annual Gala Fundraiser Announced', '')">
+                    <div class="news-date-block">
+                        <span>15</span>
+                        <small>OCT</small>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-title">Annual Gala Fundraiser Announced</div>
+                        <div class="program-description">Join us for an evening of hope and celebration as we raise
+                            funds
+                            for the new high school wing construction project.</div>
+                        <a href="#" class="news-link">Read Details</a>
+                    </div>
+                </li>
+                <li class="news-item" onclick="openModal('New Partnership with TechForAll', '')">
+                    <div class="news-date-block">
+                        <span>02</span>
+                        <small>OCT</small>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-title">New Partnership with TechForAll</div>
+                        <div class="program-description">We are excited to partner with TechForAll to bring 50 new
+                            laptops to our computer lab.</div>
+                        <a href="#" class="news-link">Read Details</a>
+                    </div>
+                </li>
+                <li class="news-item" onclick="openModal('Emergency Relief for Flood Victims', '')">
+                    <div class="news-date-block">
+                        <span>28</span>
+                        <small>SEP</small>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-title">Emergency Relief for Flood Victims</div>
+                        <div class="program-description">Our team deployed emergency food and shelter kits to
+                            families
+                            affected by recent heavy rains.</div>
+                        <a href="#" class="news-link">Read Details</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="updates-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-updates">
+            <div class="media-grid">
+                <div class="media-card" onclick="alert('Playing video: Groundbreaking Ceremony')">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Groundbreaking Ceremony</p>
+                </div>
+                <div class="media-card" onclick="alert('Playing video: Student Testimonials')">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Student Testimonials</p>
+                </div>
+                <div class="media-card" onclick="alert('View Gallery: Food Distribution')">
+                    <i class="fas fa-images"></i>
+                    <p>Food Distribution Gallery</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <my-footer></my-footer>
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+
+
+    <!-- News Modal -->
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="font-family: var(--font-head); margin-bottom: 20px;">News Title</h2>
+            <div id="modalBody" style="line-height: 1.7; color: var(--color-text);">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet.js for Interactive Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
